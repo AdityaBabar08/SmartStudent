@@ -47,7 +47,7 @@ Maven or Gradle (optional, for dependency management)
 Installation
 
 Clone the Repository:
-git clone https://github.com/your-username/smart-student-management-system.git
+git clone https://github.com/AdityaBabar08/SmartStudent.git
 cd smart-student-management-system
 
 
