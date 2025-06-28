@@ -20,13 +20,13 @@ public class AdminService {
     public boolean addStudent(Student student) {
         // Business rule: Check if roll number already exists
         if (studentDAO.selectStudentByRollNo(student.getRollNo()) != null) {
-            System.err.println("❌ Roll number already exists!");
+            System.err.println(" Roll number already exists!");
             return false;
         }
         
         // Business rule: Validate marks range
         if (student.getMarks() < 0 || student.getMarks() > 100) {
-            System.err.println("❌ Marks should be between 0 and 100!");
+            System.err.println(" Marks should be between 0 and 100!");
             return false;
         }
         
@@ -48,13 +48,13 @@ public class AdminService {
     public boolean updateStudent(Student student) {
         // Business rule: Check if student exists
         if (studentDAO.selectStudentById(student.getId()) == null) {
-            System.err.println("❌ Student not found!");
+            System.err.println(" Student not found!");
             return false;
         }
         
         // Business rule: Validate marks range
         if (student.getMarks() < 0 || student.getMarks() > 100) {
-            System.err.println("❌ Marks should be between 0 and 100!");
+            System.err.println(" Marks should be between 0 and 100!");
             return false;
         }
         
@@ -64,7 +64,7 @@ public class AdminService {
     public boolean deleteStudent(int studentId) {
         // Business rule: Check if student exists before deletion
         if (studentDAO.selectStudentById(studentId) == null) {
-            System.err.println("❌ Student not found!");
+            System.err.println(" Student not found!");
             return false;
         }
         
@@ -74,7 +74,7 @@ public class AdminService {
     // Search operations
     public List<Student> searchStudentsByName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            System.err.println("❌ Name cannot be empty!");
+            System.err.println(" Name cannot be empty!");
             return new ArrayList<>();
         }
         return studentDAO.searchStudentsByName(name);
@@ -82,7 +82,7 @@ public class AdminService {
     
     public List<Student> searchStudentsByDepartment(String department) {
         if (department == null || department.trim().isEmpty()) {
-            System.err.println("❌ Department cannot be empty!");
+            System.err.println(" Department cannot be empty!");
             return new ArrayList<>();
         }
         return studentDAO.searchStudentsByDepartment(department);
@@ -90,7 +90,7 @@ public class AdminService {
     
     public List<Student> searchStudentsByMarksRange(double minMarks, double maxMarks) {
         if (minMarks > maxMarks) {
-            System.err.println("❌ Minimum marks cannot be greater than maximum marks!");
+            System.err.println(" Minimum marks cannot be greater than maximum marks!");
             return new ArrayList<>();
         }
         return studentDAO.searchStudentsByMarksRange(minMarks, maxMarks);

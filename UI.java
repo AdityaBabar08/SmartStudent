@@ -15,7 +15,7 @@ public class UI {
         System.out.println("🎓 Welcome to Smart Student Management System");
         
         if (!showLoginScreen()) {
-            System.out.println("❌ Access denied. Exiting...");
+            System.out.println(" Access denied. Exiting...");
             return;
         }
         
@@ -31,10 +31,10 @@ public class UI {
         String password = scanner.nextLine();
         
         if (adminService.authenticateAdmin(username, password)) {
-            System.out.println("✅ Login successful!");
+            System.out.println(" Login successful!");
             return true;
         } else {
-            System.out.println("❌ Invalid credentials!");
+            System.out.println(" Invalid credentials!");
             return false;
         }
     }
@@ -52,10 +52,10 @@ public class UI {
                 case 5: searchMenu(); break;
                 case 6: showStatisticsMenu(); break;
                 case 7: 
-                    System.out.println("👋 Thank you for using Smart Student Management System!");
+                    System.out.println(" Thank you for using Smart Student Management System!");
                     return;
                 default:
-                    System.out.println("❌ Invalid choice! Please try again.");
+                    System.out.println(" Invalid choice! Please try again.");
             }
         }
     }
@@ -95,9 +95,9 @@ public class UI {
         Student student = new Student(name, rollNo, department, email, phone, marks);
         
         if (adminService.addStudent(student)) {
-            System.out.println("✅ Student added successfully!");
+            System.out.println(" Student added successfully!");
         } else {
-            System.out.println("❌ Failed to add student!");
+            System.out.println(" Failed to add student!");
         }
     }
     
@@ -106,7 +106,7 @@ public class UI {
         List<Student> students = adminService.getAllStudents();
         
         if (students.isEmpty()) {
-            System.out.println("📝 No students found!");
+            System.out.println(" No students found!");
             return;
         }
         
@@ -268,13 +268,13 @@ public class UI {
         
         AdminService.StudentStatistics stats = adminService.getStudentStatistics();
         
-        System.out.println("📊 Total Students: " + stats.getTotalStudents());
+        System.out.println(" Total Students: " + stats.getTotalStudents());
         
         if (stats.getTotalStudents() > 0) {
-            System.out.println("🏆 Highest Marks: " + stats.getHighestMarks());
-            System.out.println("📉 Lowest Marks: " + stats.getLowestMarks());
+            System.out.println(" Highest Marks: " + stats.getHighestMarks());
+            System.out.println(" Lowest Marks: " + stats.getLowestMarks());
             
-            System.out.println("\n📈 Department-wise Student Count:");
+            System.out.println("\n Department-wise Student Count:");
             Map<String, Integer> deptCount = stats.getDepartmentWiseCount();
             for (Map.Entry<String, Integer> entry : deptCount.entrySet()) {
                 System.out.println("   " + entry.getKey() + ": " + entry.getValue() + " students");
@@ -294,6 +294,8 @@ public class UI {
     }
     
     private void printStudentTableHeader() {
+
+        // float mea = 
         System.out.println("================================================================================================");
         System.out.printf("%-5s %-20s %-15s %-15s %-25s %-12s %s%n", 
                          "ID", "Name", "Roll No", "Department", "Email", "Phone", "Marks");
